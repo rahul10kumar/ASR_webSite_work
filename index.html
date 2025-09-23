@@ -41,6 +41,23 @@
             font-size: 1.25rem;
             font-weight: bold;
         }
+
+        .cover {
+            position: relative;
+            background: url('group-people-working-team.jpg') no-repeat center center/cover;
+            min-height: 100vh;
+            /* full screen height */
+        }
+
+        .cover-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            /* dark overlay for readability */
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 
@@ -49,31 +66,45 @@
     <!-- Header / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">MySite</a>
+            <a class="navbar-brand" href="#">American Software Resources, Inc</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#industries">Industries</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Downloads</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Cover Section -->
-    <section class="cover">
+    <section class="cover ">
         <div class="cover-overlay">
             <div class="container">
-                <h1 class="display-4 fw-bold">Welcome to My Site</h1>
-                <p class="lead">This is a simple cover page built with Bootstrap 5.</p>
-                <a href="#about" class="btn btn-primary btn-lg mt-3">Learn More</a>
+                <div class="row align-items-center">
+                    <!-- Left Side: Text -->
+                    <div class="col-md-6 text-center">
+                        <h1 class="display-4 fw-bold">Welcome to My Site</h1>
+                        <p class="lead">This is a simple cover page built with Bootstrap 5.</p>
+                        <a href="#about" class="btn btn-primary btn-lg mt-3">Learn More</a>
+                    </div>
+
+                    <!-- Right Side: Buttons -->
+                    <div class="col-md-6 text-center mt-3 mt-md-0">
+                        <a href="#jobs" class="btn btn-success btn-lg me-2">Find Job</a>
+                        <a href="#hire" class="btn btn-outline-light btn-lg">Hire Talent</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
 
     <!-- About Us Section -->
     <section id="about" class="about-section">
