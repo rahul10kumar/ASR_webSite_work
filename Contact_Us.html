@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASR - Contact Us</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         body {
             padding-top: 56px;
-            background: url("body_bg.png") no-repeat center top;
+            /* Main background image */
+            background: url("Asr_bg_visa.jpg") no-repeat center top;
             background-size: cover;
             background-attachment: scroll;
             font-family: Arial, sans-serif;
@@ -44,18 +44,32 @@
             margin-bottom: 20px;
         }
 
+        /* --- GLASS MORPHISM FOR CARDS --- */
         .contact-card {
-            background: rgba(0, 0, 0, 0.55);
+            /* Light, semi-transparent background for glass look */
+            background: rgba(255, 255, 255, 0.1); 
+            /* Frosted glass effect */
+            backdrop-filter: blur(8px); 
+            
             padding: 25px;
             border-radius: 12px;
             max-width: 600px;
             margin: 20px auto;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            /* Subtle dark shadow */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            /* Default text color for the card content */
+            color: #ffffff !important; 
+        }
+
+        .contact-card h4 {
+            /* Highlighted headers */
+            color: #d4af37;
         }
 
         .contact-info p {
             font-size: 1.15rem;
             margin: 8px 0;
+            color: #ffffff; /* Dark text for readability */
         }
 
         .cta-btn {
@@ -75,10 +89,11 @@
 
         .faq-section {
             margin-top: 60px;
-            text-align: left;
+            text-align: center;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            color: #ffffff !important; /* Dark text for readability */
         }
 
         .faq-section h3 {
@@ -89,6 +104,7 @@
         .faq-section p {
             margin-bottom: 15px;
             font-size: 1.1rem;
+            color: #ffffff; /* Dark text for readability */
         }
 
         .summary-table {
@@ -97,6 +113,10 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            /* Add blur for content behind the table */
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            overflow: hidden; /* Ensures table corners match div corners */
         }
 
         .summary-table th {
@@ -105,9 +125,14 @@
             text-align: center;
             font-weight: bold;
         }
-
+        
+        /* --- GLASS MORPHISM FOR SUMMARY TABLE CELLS --- */
         .summary-table td {
-            background-color: rgba(255,255,255,0.1);
+            /* Background from rgba(255,255,255,0.1) is the glass base */
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #212529; /* Dark text for readability */
+            /* Apply the frosted glass effect to table cells */
+            backdrop-filter: blur(3px); 
             padding: 10px;
         }
     </style>
@@ -115,7 +140,6 @@
 
 <body class="text-white bg-dark">
 
-    <!-- Header / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent-navbar">
         <div class="container">
 
@@ -142,7 +166,6 @@
         </div>
     </nav>
 
-    <!-- Contact Section -->
     <section class="contact-section">
         <h1>📞 Contact Us</h1>
         <h2>Get in Touch</h2>
@@ -158,24 +181,19 @@
             <p>Monday to Friday: 9:00 AM – 6:00 PM EST</p>
         </div>
 
-        <div class="contact-card">
-            <h4>For Employers:</h4>
-            <p>Looking for specialized IT talent?</p>
-            <a href="mailto:hr@americansoftwareresources.com">
-                <button class="cta-btn">Submit Your Requirement</button>
-            </a>
+
+        <div class="contact-card contact-info">
+            <h4>Our Focus</h4>
+            <p>100% U.S. Recruitment & Staffing</p>
+            <p>Talent Acquisition & Workforce Solutions</p>
+            <p>Specialized Staffing Partner tone</p>
+            <p>U.S. employment facilitation</p>
+            <p>“Hiring,” “placements,” and “careers”</p>
         </div>
 
-        <div class="contact-card">
-            <h4>For Candidates:</h4>
-            <p>Want to build your career in the U.S.?</p>
-            <a href="mailto:hr@americansoftwareresources.com">
-                <button class="cta-btn">Apply Now</button>
-            </a>
-        </div>
+     
 
-        <!-- FAQ Section -->
-        <div class="faq-section">
+        <div class="faq-section justify-content-center">
             <h3>Frequently Asked Questions</h3>
 
             <p><strong>Q1: Does ASR sponsor work visas?</strong><br>
@@ -195,41 +213,6 @@
             </p>
         </div>
 
-        <!-- Messaging Summary Table -->
-        <div class="summary-table mt-5">
-            <h3 class="text-center mb-3">Summary of the Refocused Messaging</h3>
-
-            <table class="table table-bordered table-dark">
-                <thead>
-                    <tr>
-                        <th>Old Focus</th>
-                        <th>New Focus</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>IT Outsourcing & Offshore Delivery</td>
-                        <td>100% U.S. Recruitment & Staffing</td>
-                    </tr>
-                    <tr>
-                        <td>Software Development Services</td>
-                        <td>Talent Acquisition & Workforce Solutions</td>
-                    </tr>
-                    <tr>
-                        <td>Multi-service vendor tone</td>
-                        <td>Specialized Staffing Partner tone</td>
-                    </tr>
-                    <tr>
-                        <td>Global project delivery</td>
-                        <td>U.S. employment facilitation</td>
-                    </tr>
-                    <tr>
-                        <td>“Delivery” and “projects”</td>
-                        <td>“Hiring,” “placements,” and “careers”</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
