@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ASR - Visa Sponsorship</title>
+    <title>ASR - Visa Sponsorship Timeline</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,10 +12,11 @@
     <style>
         body {
             padding-top: 56px;
-            background: url("body_bg.png") no-repeat center top;
+            background: url("Asr_bg_visa.jpg") no-repeat center top;
             background-size: cover;
             background-attachment: scroll;
             font-family: Arial, sans-serif;
+            color: #fff;
         }
 
         .transparent-navbar {
@@ -24,59 +25,141 @@
         }
 
         .transparent-navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.8) !important;
+            background-color: rgba(0, 0, 0, 0.85) !important;
         }
 
-        .visa-section {
-            padding: 80px 20px;
-            color: white;
-            text-align: center;
-        }
-
-        .visa-section h1 {
-            color: #d4af37;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .visa-section h3 {
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-
-        .visa-section ul {
-            list-style: none;
-            padding: 0;
-            max-width: 800px;
+        /* TIMELINE */
+        .timeline-container {
+            position: relative;
+            padding: 50px 0;
+            max-width: 1000px;
             margin: auto;
         }
 
-        .visa-section ul li {
-            font-size: 1.1rem;
-            padding: 8px 0;
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            background: #d2d3db;
+            top: 450px;
+            /* << Fix: don't cut heading */
+            bottom: 130px;
+            transform: translateX(-50%);
         }
 
-        .resume-btn {
-            margin-top: 30px;
-            background-color: #d4af37;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #000;
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 22px;
+            height: 22px;
+            background: black;
+            border: 4px solid #ab98ff;
+            border-radius: 50%;
+            top: 450px;
+            /* << Fix: align with line */
+            bottom: 130px;
+            transform: translateX(-50%);
+            transition: top 0.15s linear;
+            z-index: 10;
         }
 
-        .resume-btn:hover {
-            background-color: #c19b2d;
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 0;
+        }
+
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+            padding-right: 50px;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        .timeline-card {
+            /* 1. Background Image and Size - Adjusted for height issue below */
+            background: url("glass_asr.png") no-repeat center top;
+            background-size: contain;
+
+            /* 2. Fix Cropping - Set a minimum height for the card */
+            /* Adjust this value (e.g., 300px) based on how tall the content needs to be */
+            min-height: 300px;
+
+            /* 3. Transparency/Glass Effect (Optional but Recommended for modern look) */
+            /* Remove any solid background-color */
+            /* Apply a slight blur effect to the background behind the card */
+            backdrop-filter: blur(5px);
+
+            /* 4. Original Styling */
+            border-left: 5px solid rgba(100, 157, 255, 0);
+            /* Still solid blue, but transparent border color */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(55, 55, 212, 0);
+            transition: 0.3s ease;
+        }
+
+        .timeline-card.pop {
+            transform: scale(1.06);
+            /* Increase the opacity of the shadow when popped */
+            box-shadow: 0 0 30px rgba(55, 97, 212, 0);
+        }
+
+        .timeline-card h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .timeline-line {
+                left: 25px !important;
+                top: 450px;
+                transform: none !important;
+            }
+
+            .timeline-dot {
+                left: 25px !important;
+                top: 450px;
+                transform: translate(-50%, -10px) !important;
+            }
+
+            .timeline-item {
+                width: 100% !important;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                text-align: left !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+            }
         }
     </style>
 </head>
 
-<body class="text-white bg-dark">
+<body>
 
-    <!-- Header / Navbar -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent-navbar">
         <div class="container">
 
@@ -93,9 +176,10 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#CompanyOverview">About ASR</a></li>
-                    <li class="nav-item"><a class="nav-link" href="IT_Staffing_&_Recruitment.html">IT Staffing & Recruitment (USA)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="IT_Staffing_&_Recruitment.html">IT Staffing</a></li>
                     <li class="nav-item"><a class="nav-link" href="Careers.html">Careers</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Visa_Sponsorship.html">Visa Sponsorship</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Visa_Sponsorship.html">Visa Sponsorship</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="Contact_Us.html">Contact Us</a></li>
                 </ul>
             </div>
@@ -103,63 +187,138 @@
         </div>
     </nav>
 
-    <!-- Visa Sponsorship Section -->
-    <section class="visa-section">
+    <!-- TIMELINE SECTION -->
+    <section class="timeline-container">
 
-        <h1>🌎 Visa Sponsorship</h1>
-        <h2>Supporting Global Talent for U.S. Careers</h2>
-
-        <p class="mt-3" style="max-width: 900px; margin: auto;">
-            American Software Resources believes that great talent knows no borders. We provide services to U.S. Citizens as well as visa sponsorship and immigration assistance for qualified foreign candidates who meet U.S. employment eligibility criteria.
+        <h1 class="text-center fw-bold mb-5" style="color:#ffffff;">🌎 Visa Sponsorship</h1>
+        <h2 class="text-center fw-bold mb-2" style="color:#ffffff;">Supporting Global Talent for U.S. Careers</h2>
+        <p class="lead py-4 text-center mb-5">
+            American Software Resources believes that great talent knows no borders. We provide services to U.S.
+            Citizens as well as visa sponsorship and immigration assistance for qualified foreign candidates who meet
+            U.S. employment eligibility criteria.
         </p>
 
-        <h3>Programs Supported</h3>
-        <ul>
-            <li>• H-1B Sponsorship (new filings and transfers)</li>
-            <li>• OPT / CPT Employment for international graduates</li>
-            <li>• Green Card (EB-2 / EB-3) sponsorship after meeting tenure and performance requirements</li>
-        </ul>
+        <br>
 
-        <h3>Eligibility & Policy</h3>
-        <ul>
-            <li>• Sponsorship is evaluated case-by-case based on role fit and credentials</li>
-            <li>• Candidates must hold relevant educational degrees and work experience</li>
-            <li>• ASR complies fully with U.S. Department of Labor and USCIS regulations</li>
-            <li>• Transparency and legal compliance are core to our sponsorship program</li>
-        </ul>
+        <!-- Center Line -->
+        <div class="timeline-line"></div>
+        <div class="timeline-dot" id="timelineDot"></div>
 
-        <h3>Typical Process</h3>
-        <ul>
-            <li>1. Application and initial screening</li>
-            <li>2. Eligibility verification and document review</li>
-            <li>3. H-1B or LCA initiation (if applicable)</li>
-            <li>4. Filing through certified immigration partners</li>
-            <li>5. Post-approval onboarding and client assignment</li>
-        </ul>
+        <!-- CARD 1 -->
+        <div class="timeline-item left " data-step="0.1">
+            <div class="timeline-card text-center">
+              
+                <h3>Programs Supported</h3>
+                <ul>
+                    <li>H-1B Sponsorship (new filings & transfers)</li>
+                    <li>OPT / CPT Employment</li>
+                    <li>Green Card Sponsorship (EB-2 / EB-3)</li>
+                </ul>
+            </div>
+        </div>
 
-        <h3>Why Choose ASR for Sponsorship</h3>
-        <ul>
-            <li>• Proven track record of successful H-1B and Green Card filings</li>
-            <li>• In-house legal coordination for compliance</li>
-            <li>• Transparent communication at every step</li>
-            <li>• Long-term employment and project stability</li>
-        </ul>
+        <!-- CARD 2 -->
+        <div class="timeline-item right" data-step="0.3">
+            <div class="timeline-card text-center">
+            
+                <h3>Eligibility & Policy</h3>
+                <ul>
+                    <li>Case-by-case sponsorship evaluation</li>
+                    <li>Must meet education & experience requirements</li>
+                    <li>Full USCIS & US DOL compliance</li>
+                    <li>Transparent and ethical process</li>
+                </ul>
+            </div>
+        </div>
 
-        <a href="mailto:hr@americansoftwareresources.com">
-            <button class="resume-btn">Check Your Visa Eligibility → hr@americansoftwareresources.com</button>
-        </a>
+        <!-- CARD 3 -->
+        <div class="timeline-item left" data-step="0.55">
+            <div class="timeline-card text-center">
+             
+                <h3>Typical Process</h3>
+                <ul>
+                    <li>1. Application screening</li>
+                    <li>2. Eligibility verification</li>
+                    <li>3. H-1B / LCA initiation (if applicable)</li>
+                    <li>4. Filing via immigration partners</li>
+                    <li>5. Onboarding after approval</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="timeline-item right" data-step="0.8">
+            <div class="timeline-card text-center">
+              
+                <h3>Why Choose ASR</h3>
+                <ul>
+                    <li>Proven successful filings</li>
+                    <li>Dedicated legal coordination</li>
+                    <li>Clear communication at every step</li>
+                    <li>Long-term stability & assignments</li>
+                </ul>
+            </div>
+        </div>
 
     </section>
 
+    <br>
+<br>
+
+    <div class="text-center mb-5">
+        <a href="mailto:hr@americansoftwareresources.com">
+            <button class="btn btn-lg" style="background:#d4af37;color:black;font-weight:bold;">
+                Check Your Visa Eligibility → hr@americansoftwareresources.com
+            </button>
+        </a>
+    </div>
+
+    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Navbar color change on scroll
-        window.addEventListener("scroll", function () {
-            const navbar = document.querySelector(".transparent-navbar");
-            if (window.scrollY > 50) navbar.classList.add("scrolled");
-            else navbar.classList.remove("scrolled");
+        // Navbar scroll effect
+        window.addEventListener("scroll", () => {
+            document.querySelector(".transparent-navbar")
+                .classList.toggle("scrolled", window.scrollY > 50);
         });
+
+        // Timeline Animation
+        const timeline = document.querySelector(".timeline-container");
+        const dot = document.getElementById("timelineDot");
+        const items = document.querySelectorAll(".timeline-item");
+
+        let duration = 6000;
+        let startTime = null;
+
+        function getCenterY(el) {
+            return el.offsetTop + el.clientHeight / 2;
+        }
+
+        const firstY = getCenterY(items[0]);
+        const lastY = getCenterY(items[items.length - 1]);
+        const distance = lastY - firstY;
+
+        function animate(ts) {
+            if (!startTime) startTime = ts;
+
+            let progress = (ts - startTime) / duration;
+            if (progress > 1) { startTime = ts; progress = 0; }
+
+            let currentY = firstY + distance * progress;
+            dot.style.top = currentY + "px";
+
+            items.forEach(item => {
+                let step = parseFloat(item.dataset.step);
+                const card = item.querySelector(".timeline-card");
+
+                card.classList.toggle("pop", progress >= step);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
     </script>
 
 </body>
