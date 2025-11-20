@@ -10,151 +10,153 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        body {
-            padding-top: 56px;
-            background: url("Asr_bg_visa.jpg") no-repeat center top;
-            background-size: cover;
-            background-attachment: scroll;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
+    body {
+        padding-top: 56px;
+        background: url("Asr_bg_visa.jpg") no-repeat center top;
+        background-size: cover;
+        background-attachment: scroll;
+        font-family: Arial, sans-serif;
+        color: #fff;
+    }
 
-        .transparent-navbar {
-            background-color: rgba(0, 0, 0, 0) !important;
-            transition: background-color 0.4s ease;
-        }
+    .transparent-navbar {
+        background-color: rgba(0, 0, 0, 0) !important;
+        transition: background-color 0.4s ease;
+    }
 
-        .transparent-navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.85) !important;
-        }
+    .transparent-navbar.scrolled {
+        background-color: rgba(0, 0, 0, 0.85) !important;
+    }
 
-        /* TIMELINE */
-        .timeline-container {
-            position: relative;
-            padding: 50px 0;
-            max-width: 1000px;
-            margin: auto;
-        }
+    /* TIMELINE */
+    .timeline-container {
+        position: relative;
+        padding: 50px 0;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .timeline-line {
+        position: absolute;
+        left: 50%;
+        width: 4px;
+        background: #d2d3db;
+        top: 450px;
+        /* << Fix: don't cut heading */
+        bottom: 130px;
+        transform: translateX(-50%);
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: 50%;
+        width: 22px;
+        height: 22px;
+        background: black;
+        border: 4px solid #ab98ff;
+        border-radius: 50%;
+        top: 450px;
+        /* << Fix: align with line */
+        bottom: 130px;
+        transform: translateX(-50%);
+        transition: top 0.15s linear;
+        z-index: 10;
+    }
+
+
+    .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 20px 0;
+    }
+
+    .timeline-item.left {
+        left: 0;
+        text-align: right;
+        padding-right: 50px;
+    }
+
+    .timeline-item.right {
+        left: 50%;
+        text-align: left;
+        padding-left: 50px;
+    }
+
+    /* --- REVISED .timeline-card STYLES FOR GLASS EFFECT --- */
+    .timeline-card {
+        /* Glass Effect: semi-transparent white/light background */
+        background-color: rgba(255, 255, 255, 0.1); 
+        
+        /* Frosted Glass Effect (optional, modern look) */
+        backdrop-filter: blur(8px); 
+        
+        /* Remove the background image, size, and min-height fixes */
+        /* background: none; */ 
+        /* background-size: auto; */ 
+        min-height: auto; /* Allow height to be determined by content */
+
+        /* Original Styling */
+        border-left: 5px solid rgba(100, 157, 255, 0.4); /* Make border slightly visible */
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Use a darker, subtle shadow */
+        transition: 0.3s ease;
+    }
+
+    .timeline-card.pop {
+        transform: scale(1.06);
+        /* Make the shadow more prominent when hovered */
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+    }
+
+    .timeline-card h3 {
+        /* Making heading dark for better readability on light glass background */
+        color: #ffffff; 
+        margin-bottom: 15px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 6px;
+        /* Making list text dark for better readability */
+        color: #ffffff; 
+    }
+    /* ---------------------------------------------------- */
+
+    /* MOBILE */
+    @media (max-width: 768px) {
 
         .timeline-line {
-            position: absolute;
-            left: 50%;
-            width: 4px;
-            background: #d2d3db;
+            left: 25px !important;
             top: 450px;
-            /* << Fix: don't cut heading */
-            bottom: 130px;
-            transform: translateX(-50%);
+            transform: none !important;
         }
 
         .timeline-dot {
-            position: absolute;
-            left: 50%;
-            width: 22px;
-            height: 22px;
-            background: black;
-            border: 4px solid #ab98ff;
-            border-radius: 50%;
+            left: 25px !important;
             top: 450px;
-            /* << Fix: align with line */
-            bottom: 130px;
-            transform: translateX(-50%);
-            transition: top 0.15s linear;
-            z-index: 10;
+            transform: translate(-50%, -10px) !important;
         }
-
 
         .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 20px 0;
+            width: 100% !important;
+            left: 0 !important;
+            padding-left: 60px !important;
+            padding-right: 0 !important;
+            text-align: left !important;
         }
 
-        .timeline-item.left {
-            left: 0;
-            text-align: right;
-            padding-right: 50px;
-        }
-
+        .timeline-item.left,
         .timeline-item.right {
-            left: 50%;
-            text-align: left;
-            padding-left: 50px;
+            text-align: left !important;
+            padding-left: 60px !important;
+            padding-right: 0 !important;
         }
-
-        .timeline-card {
-            /* 1. Background Image and Size - Adjusted for height issue below */
-            background: url("glass_asr.png") no-repeat center top;
-            background-size: contain;
-
-            /* 2. Fix Cropping - Set a minimum height for the card */
-            /* Adjust this value (e.g., 300px) based on how tall the content needs to be */
-            min-height: 300px;
-
-            /* 3. Transparency/Glass Effect (Optional but Recommended for modern look) */
-            /* Remove any solid background-color */
-            /* Apply a slight blur effect to the background behind the card */
-            backdrop-filter: blur(5px);
-
-            /* 4. Original Styling */
-            border-left: 5px solid rgba(100, 157, 255, 0);
-            /* Still solid blue, but transparent border color */
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(55, 55, 212, 0);
-            transition: 0.3s ease;
-        }
-
-        .timeline-card.pop {
-            transform: scale(1.06);
-            /* Increase the opacity of the shadow when popped */
-            box-shadow: 0 0 30px rgba(55, 97, 212, 0);
-        }
-
-        .timeline-card h3 {
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 6px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
-
-            .timeline-line {
-                left: 25px !important;
-                top: 450px;
-                transform: none !important;
-            }
-
-            .timeline-dot {
-                left: 25px !important;
-                top: 450px;
-                transform: translate(-50%, -10px) !important;
-            }
-
-            .timeline-item {
-                width: 100% !important;
-                left: 0 !important;
-                padding-left: 60px !important;
-                padding-right: 0 !important;
-                text-align: left !important;
-            }
-
-            .timeline-item.left,
-            .timeline-item.right {
-                text-align: left !important;
-                padding-left: 60px !important;
-                padding-right: 0 !important;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
