@@ -7,138 +7,65 @@
     <title>ASR - Contact Us</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom Modern CSS -->
+    <link rel="stylesheet" href="modern.css">
     <style>
-        body {
-            padding-top: 56px;
-            /* Main background image */
-            background: url("Asr_bg_visa.jpg") no-repeat center top;
-            background-size: cover;
-            background-attachment: scroll;
-            font-family: Arial, sans-serif;
-        }
-
-        .transparent-navbar {
-            background-color: rgba(0, 0, 0, 0) !important;
-            transition: background-color 0.4s ease;
-        }
-
-        .transparent-navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.8) !important;
-        }
-
         .contact-section {
             padding: 80px 20px;
             color: white;
             text-align: center;
         }
 
-        .contact-section h1 {
-            color: #d4af37;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .contact-section h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        /* --- GLASS MORPHISM FOR CARDS --- */
         .contact-card {
-            /* Light, semi-transparent background for glass look */
-            background: rgba(255, 255, 255, 0.1); 
-            /* Frosted glass effect */
-            backdrop-filter: blur(8px); 
-            
-            padding: 25px;
-            border-radius: 12px;
             max-width: 600px;
             margin: 20px auto;
-            /* Subtle dark shadow */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            /* Default text color for the card content */
-            color: #ffffff !important; 
-        }
-
-        .contact-card h4 {
-            /* Highlighted headers */
-            color: #d4af37;
         }
 
         .contact-info p {
             font-size: 1.15rem;
             margin: 8px 0;
-            color: #ffffff; /* Dark text for readability */
+            color: #ffffff;
         }
 
         .cta-btn {
             margin-top: 20px;
-            background-color: #d4af37;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #000;
-        }
-
-        .cta-btn:hover {
-            background-color: #c19b2d;
         }
 
         .faq-section {
             margin-top: 60px;
-            text-align: center;
-            max-width: 900px;
+            text-align: left;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            color: #ffffff !important; /* Dark text for readability */
+            color: #ffffff !important;
         }
 
         .faq-section h3 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: #d4af37;
+            text-align: center;
         }
 
         .faq-section p {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             font-size: 1.1rem;
-            color: #ffffff; /* Dark text for readability */
+            color: #d1d1d1;
         }
 
-        .summary-table {
-            margin-top: 50px;
-            color: white;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            /* Add blur for content behind the table */
-            backdrop-filter: blur(5px);
-            border-radius: 12px;
-            overflow: hidden; /* Ensures table corners match div corners */
-        }
-
-        .summary-table th {
-            background-color: #d4af37;
-            color: #000;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        /* --- GLASS MORPHISM FOR SUMMARY TABLE CELLS --- */
-        .summary-table td {
-            /* Background from rgba(255,255,255,0.1) is the glass base */
-            background-color: rgba(255, 255, 255, 0.1); 
-            color: #212529; /* Dark text for readability */
-            /* Apply the frosted glass effect to table cells */
-            backdrop-filter: blur(3px); 
-            padding: 10px;
+        .faq-section p strong {
+            color: #ffffff;
+            font-size: 1.15rem;
+            display: block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 
-<body class="text-white bg-dark">
+<body class="bg-visa">
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent-navbar">
         <div class="container">
@@ -156,7 +83,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#CompanyOverview">About ASR</a></li>
-                    <li class="nav-item"><a class="nav-link" href="IT_Staffing_&_Recruitment.html">IT Staffing & Recruitment (USA)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="IT_Staffing_&_Recruitment.html">IT Staffing &
+                            Recruitment (USA)</a></li>
                     <li class="nav-item"><a class="nav-link" href="Careers.html">Careers</a></li>
                     <li class="nav-item"><a class="nav-link" href="Visa_Sponsorship.html">Visa Sponsorship</a></li>
                     <li class="nav-item"><a class="nav-link active" href="Contact_Us.html">Contact Us</a></li>
@@ -166,56 +94,180 @@
         </div>
     </nav>
 
-    <section class="contact-section">
-        <h1>📞 Contact Us</h1>
-        <h2>Get in Touch</h2>
+    <section class="contact-section page-section pb-5" style="padding-top: 120px;">
+        <div class="container">
+            <h1 class="display-5 fw-bold mb-1" data-aos="fade-down"><i class="fas fa-headset text-gold me-3"></i>Contact
+                Us</h1>
+            <h2 class="h3 text-white fw-light mb-3" data-aos="fade-up">Get in Touch with American Software Resources
+            </h2>
+            <div class="gold-line mx-auto" data-aos="fade-up"></div>
 
-        <div class="contact-card contact-info">
-            <h4>Corporate Office:</h4>
-            <p>American Software Resources, Inc.</p>
-            <p>4 Brower Avenue, Suite 4, Woodmere, NY 11598</p>
-            <p>📞 +1 (516) 284-7348</p>
-            <p>📧 hr@americansoftwareresources.com</p>
+            <div class="row g-4 mt-5 text-start">
 
-            <h4 class="mt-4">Business Hours:</h4>
-            <p>Monday to Friday: 9:00 AM – 6:00 PM EST</p>
+                <!-- Left Column: Contact Details & Focus -->
+                <div class="col-lg-5 d-flex flex-column gap-4" data-aos="fade-right" data-aos-delay="100">
+
+                    <!-- Corporate Office Card -->
+                    <div class="glass-card p-4 position-relative overflow-hidden flex-grow-1">
+                        <i class="fas fa-building position-absolute text-white"
+                            style="font-size: 150px; right: -20px; bottom: -20px; opacity: 0.03; transform: rotate(-15deg);"></i>
+                        <h4 class="text-gold fw-bold mb-3"><i
+                                class="fas fa-map-marker-alt me-2 anim-float"></i>Corporate Office</h4>
+                        <p class="text-white fw-bold mb-1 fs-5">American Software Resources, Inc.</p>
+                        <p class="text-light-muted mb-3">4 Brower Avenue, Suite 4<br>Woodmere, NY 11598</p>
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="bg-gold bg-opacity-10 p-2 rounded-circle me-3">
+                                <i class="fas fa-phone-alt text-gold"></i>
+                            </div>
+                            <span class="text-white">+1 (516) 284-7348</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-gold bg-opacity-10 p-2 rounded-circle me-3">
+                                <i class="fas fa-envelope text-gold"></i>
+                            </div>
+                            <span class="text-white text-break">hr@americansoftwareresources.com</span>
+                        </div>
+                    </div>
+
+                    <!-- Business Hours Card -->
+                    <div class="glass-card p-4">
+                        <h4 class="text-gold fw-bold mb-3"><i class="far fa-clock me-2 anim-spin"
+                                style="animation-duration: 4s;"></i>Business Hours</h4>
+                        <div class="d-flex justify-content-between align-items-center text-light-muted">
+                            <span>Monday – Friday:</span>
+                            <span class="text-white fw-bold">9:00 AM – 6:00 PM EST</span>
+                        </div>
+                    </div>
+
+                    <!-- Our Focus Card -->
+                    <div class="glass-card p-4">
+                        <h4 class="text-gold fw-bold mb-3"><i class="fas fa-crosshairs me-2 anim-pulse"></i>Our Focus
+                        </h4>
+                        <ul class="list-unstyled text-light-muted mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>100% U.S. Recruitment & Staffing
+                            </li>
+                            <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Talent Acquisition & Workforce
+                                Solutions</li>
+                            <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>Specialized Staffing Partner
+                                tone</li>
+                            <li class="mb-2"><i class="fas fa-check text-gold me-2"></i>U.S. employment facilitation
+                            </li>
+                            <li><i class="fas fa-check text-gold me-2"></i>“Hiring,” “placements,” and “careers”</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column: FAQ -->
+                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+                    <div class="glass-card p-4 p-md-5 h-100 position-relative overflow-hidden">
+                        <i class="fas fa-question-circle position-absolute text-white"
+                            style="font-size: 250px; right: -50px; top: -50px; opacity: 0.02; transform: rotate(15deg);"></i>
+                        <h3 class="text-gold fw-bold mb-4 text-center text-md-start"><i
+                                class="fas fa-comments me-2"></i>Frequently Asked Questions</h3>
+
+                        <div class="accordion accordion-flush bg-transparent" id="faqAccordion">
+                            <!-- FAQ 1 -->
+                            <div
+                                class="accordion-item bg-transparent border-bottom border-light border-opacity-10 pb-3 mb-3">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        <i class="fas fa-passport text-gold me-3"></i> Does ASR sponsor work visas?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-light-muted px-0 pt-2 pb-0 ps-5">
+                                        Yes, for qualified candidates under eligible job categories.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 2 -->
+                            <div
+                                class="accordion-item bg-transparent border-bottom border-light border-opacity-10 pb-3 mb-3">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        <i class="fas fa-users-cog text-gold me-3"></i> What roles do you recruit for?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-light-muted px-0 pt-2 pb-0 ps-5">
+                                        Software engineers, QA testers, analysts, DevOps engineers, data professionals,
+                                        and IT managers.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 3 -->
+                            <div
+                                class="accordion-item bg-transparent border-bottom border-light border-opacity-10 pb-3 mb-3">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        <i class="fas fa-globe-americas text-gold me-3"></i> Can international
+                                        candidates apply?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-light-muted px-0 pt-2 pb-0 ps-5">
+                                        Yes. We evaluate each case based on qualifications and U.S. immigration
+                                        guidelines.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ 4 -->
+                            <div class="accordion-item bg-transparent border-0 pb-0 mb-0">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button collapsed bg-transparent text-white fw-bold px-0 shadow-none"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        <i class="fas fa-calendar-check text-gold me-3"></i> How soon can I expect
+                                        placement?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body text-light-muted px-0 pt-2 pb-0 ps-5">
+                                        Typically within 4–8 weeks depending on project availability.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-
-        <div class="contact-card contact-info">
-            <h4>Our Focus</h4>
-            <p>100% U.S. Recruitment & Staffing</p>
-            <p>Talent Acquisition & Workforce Solutions</p>
-            <p>Specialized Staffing Partner tone</p>
-            <p>U.S. employment facilitation</p>
-            <p>“Hiring,” “placements,” and “careers”</p>
-        </div>
-
-     
-
-        <div class="faq-section justify-content-center">
-            <h3>Frequently Asked Questions</h3>
-
-            <p><strong>Q1: Does ASR sponsor work visas?</strong><br>
-                Yes, for qualified candidates under eligible job categories.
-            </p>
-
-            <p><strong>Q2: What roles do you recruit for?</strong><br>
-                Software engineers, QA testers, analysts, DevOps engineers, data professionals, and IT managers.
-            </p>
-
-            <p><strong>Q3: Can international candidates apply?</strong><br>
-                Yes. We evaluate each case based on qualifications and U.S. immigration guidelines.
-            </p>
-
-            <p><strong>Q4: How soon can I expect placement?</strong><br>
-                Typically within 4–8 weeks depending on project availability.
-            </p>
-        </div>
-
     </section>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2025 ASR. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="Privacy_Policy.html"
+                        class="text-light text-decoration-none">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="Terms_of_Service.html" class="text-light text-decoration-none">Terms of Service</a>
+                </li>
+                <li class="list-inline-item"><a href="Contact_Us.html"
+                        class="text-light text-decoration-none">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 
     <script>
         // Navbar scroll effect

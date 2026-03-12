@@ -7,124 +7,43 @@
     <title>ASR</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom Modern CSS -->
+    <link rel="stylesheet" href="modern.css">
     <style>
-        body {
-
-
-            padding-top: 56px;
-            /* matches Bootstrap 5 navbar height */
-            background: url("Asr_bg_website.jpg") no-repeat center top;
+        .cover {
+            height: 100vh;
             background-size: cover;
-            background-attachment: scroll;
-            font-family: Arial, sans-serif;
+            position: relative;
+            min-height: 100vh;
         }
 
         .cover-overlay {
-            background-color: rgba(0, 0, 0, 0.0);
+            background: linear-gradient(to bottom, rgba(3, 3, 3, 0.4), rgba(3, 3, 3, 0.95));
             height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
         }
 
-        .CompanyOverview-section,
-        .industries-section {
-            padding: 50px 0;
-        }
-
-        /*.CompanyOverview-section {
-            background-color: #f8f9fa;
-        }
-
-        .industries-section {
-            background-color: #e9ecef;
-        }*/
-
-        .card-body h5 {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .cover {
-            height: 100vh;
-
-            background-size: cover;
-            /* color: white;*/
-            position: relative;
-            /*background: url('ASR_bg.png') no-repeat center center/cover;*/
-            min-height: 100vh;
-            /* full screen height */
-        }
-
-        .CompanyOverview-section {
-
-
-
-            background-size: cover;
-            /* color: white;*/
-            position: relative;
-            /* background: url('ASR_n_bg2.png') no-repeat center center/cover;*/
-        }
-
-        .cover-overlay {
-            background: rgba(0, 0, 0, 0.0);
-            /* dark overlay for readability */
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .transparent-navbar {
-            background-color: rgba(0, 0, 0, 0) !important;
-            /* fully transparent */
-            transition: background-color 0.4s ease;
-            /* smooth transition */
-        }
-
-        .transparent-navbar.scrolled {
-            background-color: rgba(0, 0, 0, 0.8) !important;
-            /* 50% opacity */
-        }
-
-
         /* Fade animation */
         .fade-text {
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transform: translateY(20px);
+            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .fade-text.show {
             opacity: 1;
-        }
-
-        .green-card-section {
-            background-color: rgba(0, 0, 0, 0);
-            /* black background */
-            padding: 80px 20px;
-        }
-
-        .green-card-section h1 {
-            color: #d4af37;
-            /* gold look */
-        }
-
-        .green-card-section h2 {
-            color: #ffffff;
-            letter-spacing: 1px;
-        }
-
-        .green-card-section ul li {
-            font-size: 1.1rem;
-        }
-
-        .green-card-section p,
-        .green-card-section h4 {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            transform: translateY(0);
         }
 
         .bg-video {
@@ -135,20 +54,30 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.35;
-            /* transparent so text is visible */
+            opacity: 0.25;
+            /* Dimmer for sleek aesthetic */
+        }
+
+        /* Green card specific section fixes */
+        .green-card-section {
+            background-color: transparent;
+            padding: 80px 20px;
+        }
+
+        .green-card-section h1 {
+            color: #e5b349;
         }
     </style>
 </head>
 
-<body class="text-white bg-dark">
+<body class="bg-home">
 
     <!-- Header / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent-navbar">
         <div class="container">
             <!-- Logo + Company Name -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="ASR_new_white_logo.png" alt="Logo" width="80" height="40" class="me-2">
+            <a class="navbar-brand d-flex align-items-center mb-0" href="#">
+                <img src="ASR_new_white_logo.png" alt="Logo" width="80" height="40">
                 AMERICAN SOFTWARE RESOURCES, Inc
             </a>
 
@@ -183,21 +112,22 @@
             <div class="container">
                 <div class="row align-items-center">
                     <!-- Left Side: Text -->
-                    <div class="col-md-6 text-center">
-                        <h1 class="display-5 fw-bold">American Software Resources, Inc</h1>
-                        <br>
+                    <div class="col-md-7 text-center text-md-start">
+                        <h1 class="display-3 fw-bold mb-4" style="line-height: 1.1;">American Software Resources, Inc
+                        </h1>
                         <!-- Rotating Content -->
-                        <div id="rotating-content">
-                            <h2 class="display-7 fw-bold fade-text">Simplifying IT</h2>
-                            <p class="lead fade-text">We determine the best possible solution that fits your need &
-                                budget.</p>
+                        <div id="rotating-content" class="mb-5">
+                            <h2 class="display-6 fw-bold fade-text text-gold mb-3">Simplifying IT</h2>
+                            <p class="lead fade-text" style="font-size: 1.25rem;">We determine the best possible
+                                solution that fits your need &amp; budget.</p>
                         </div>
                     </div>
 
                     <!-- Right Side: Buttons -->
-                    <div class="col-md-6 text-center mt-3 mt-md-0">
-                        <a href="#jobs" class="btn btn-primary btn-lg me-2">Find Job</a>
-                        <a href="#hire" class="btn btn-outline-light btn-lg">Hire Talent</a>
+                    <div class="col-md-5 text-center text-md-end mt-4 mt-md-0" data-aos="fade-left">
+                        <a href="Careers.html" class="btn btn-gold btn-lg me-md-3 mb-3 mb-md-0 d-block d-md-inline-block">Find
+                            Job</a>
+                        <a href="Contact_Us.html" class="btn btn-outline-gold btn-lg d-block d-md-inline-block">Hire Talent</a>
                     </div>
                 </div>
             </div>
@@ -207,202 +137,238 @@
 
 
     <!-- About Us Section -->
-    <section id="CompanyOverview" class="CompanyOverview-section">
+    <section id="CompanyOverview" class="page-section">
         <div class="container fs-5">
-            <br>
+            <h2 class="display-5 fw-bold text-center" data-aos="fade-up">Empowering America’s IT Workforce</h2>
+            <div class="gold-line" data-aos="fade-up"></div>
 
-            <h2 class="display-5 fw-bold  d-flex flex-row justify-content-center">Empowering America’s IT Workforce</h2>
-
-
-            <p class="lead py-3 text-center">
+            <p class="lead py-3 text-center mb-5" data-aos="fade-up" data-aos-delay="100"
+                style="max-width: 800px; margin: 0 auto;">
                 American Software Resources, Inc. (ASR) is a U.S.-based IT staffing and recruitment company helping
                 enterprises find exceptional technology talent across the nation.
                 For over two decades, ASR has connected skilled developers, analysts, and engineers with leading
                 U.S. organizations — building long-term relationships based on trust, compliance, and
                 performance.
             </p>
-            <br>
-            <div class="row py-4    ">
+
+            <div class="row g-4" data-aos="fade-up">
+                <!-- Mission & Vision Cards -->
                 <div class="col-md-6">
-                    <h2 id="mission-heading">Our Mission</h2>
-                    <p class="lead">
-                        To bridge the gap between opportunity and talent through transparent, ethical, and efficient
-                        staffing solutions.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <!-- <img src="recuitment.png" alt="About Us" class="img-fluid rounded shadow">-->
-
-
-                    <h2 id="vision-heading">Our Vision</h2>
-                    <p class="lead">
-                        To become the most trusted partner for technology recruitment in the United States,
-                        supporting
-                        both employers and professionals in achieving their growth goals.
-                    </p>
-
-
-                </div>
-            </div>
-
-            <div class="row py-5">
-                <div class="col-md-6">
-                    <img src="recuitment.png" alt="About Us" class="img-fluid rounded shadow"
-                        style="width: 400px; height: auto;">
-                </div>
-                <div class="col-md-6 d-flex flex-column justify-content-center">
-                    <!-- <img src="recuitment.png" alt="About Us" class="img-fluid rounded shadow">-->
-
-
-                    <h2 id="values-heading">Core Values</h2>
-                    <ul>
-                        <li>Integrity and compliance in every engagement</li>
-                        <li>Candidate-first experience with honest guidance</li>
-                        <li>Diversity, inclusion, and equal opportunity</li>
-                        <li>Transparent processes and long-term partnerships</li>
-                    </ul>
-
-
-                </div>
-            </div>
-
-            <div class="row py-5">
-                <div class="col-md-6 d-flex flex-column justify-content-center">
-
-                    <h2 id="values-heading">Quick Stats</h2>
-                    <ul>
-                        <li>Experience in U.S. IT staffing</li>
-                        <li>Successful placements nationwide</li>
-                        <li>Active sponsorship program for eligible candidates</li>
-                        <li>Offices in New York and regional partnerships across the U.S.</li>
-                    </ul>
-                </div>
-                <div class="col-md-6 ">
-                    <img src="recuitment.png" alt="About Us" class="img-fluid rounded shadow"
-                        style="width: 400px; height: auto;">
-
-
-                </div>
-            </div>
-
-            <!-- <div class="row">
-                <div class="col-md-6">
-
-
-
-                    <h2 id="mission-heading">Our Mission</h2>
-                    <p class="lead">
-                        To bridge the gap between opportunity and talent through transparent, ethical, and efficient
-                        staffing solutions.
-                    </p>
-
-
-
-                    <h2 id="values-heading">Core Values</h2>
-                    <ul>
-                        <li>Integrity and compliance in every engagement</li>
-                        <li>Candidate-first experience with honest guidance</li>
-                        <li>Diversity, inclusion, and equal opportunity</li>
-                        <li>Transparent processes and long-term partnerships</li>
-                    </ul>
-
-                    <h2 id="values-heading">Quick Stats</h2>
-                    <ul>
-                        <li>Experience in U.S. IT staffing</li>
-                        <li>Successful placements nationwide</li>
-                        <li>Active sponsorship program for eligible candidates</li>
-                        <li>Offices in New York and regional partnerships across the U.S.</li>
-                    </ul>
-
-                </div>
-                <div class="col-md-6">
-                    <- <img src="recuitment.png" alt="About Us" class="img-fluid rounded shadow">->
-                    <div class="col-md-6">
-
-
-                        <h2 id="vision-heading">Our Vision</h2>
-                        <p class="lead">
-                            To become the most trusted partner for technology recruitment in the United States,
-                            supporting
-                            both employers and professionals in achieving their growth goals.
+                    <div class="glass-card h-100">
+                        <h3 id="mission-heading" class="text-gold mb-3"><i class="fas fa-bullseye me-2"></i>Our Mission
+                        </h3>
+                        <p class="lead fs-6">
+                            To bridge the gap between opportunity and talent through transparent, ethical, and efficient
+                            staffing solutions.
                         </p>
-
-
-                        <h2 id="values-heading">Quick Stats</h2>
-                        <ul>
-                            <li>Experience in U.S. IT staffing</li>
-                            <li>Successful placements nationwide</li>
-                            <li>Active sponsorship program for eligible candidates</li>
-                            <li>Offices in New York and regional partnerships across the U.S.</li>
-                        </ul>
-
                     </div>
                 </div>
-            </div> -->
+                <div class="col-md-6">
+                    <div class="glass-card h-100">
+                        <h3 id="vision-heading" class="text-gold mb-3"><i class="fas fa-eye me-2"></i>Our Vision</h3>
+                        <p class="lead fs-6">
+                            To become the most trusted partner for technology recruitment in the United States,
+                            supporting both employers and professionals in achieving their growth goals.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Core Values Card (Full Width with Graphic) -->
+                <div class="col-12 py-3">
+                    <div class="glass-card container-fluid py-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 mb-4 mb-md-0 d-flex flex-column justify-content-center">
+                                <h3 id="values-heading" class="text-gold mb-4"><i class="fas fa-star me-2"></i>Core
+                                    Values</h3>
+                                <ul class="custom-list">
+                                    <li>Integrity and compliance in every engagement</li>
+                                    <li>Candidate-first experience with honest guidance</li>
+                                    <li>Diversity, inclusion, and equal opportunity</li>
+                                    <li>Transparent processes and long-term partnerships</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <!-- Animated Recruitment Vector -->
+                                <div class="vector-animation-container">
+                                    <svg class="vector-lines">
+                                        <g class="animated-line">
+                                            <line x1="200" y1="200" x2="200" y2="40" />
+                                            <line x1="200" y1="200" x2="310" y2="80" />
+                                            <line x1="200" y1="200" x2="360" y2="200" />
+                                            <line x1="200" y1="200" x2="310" y2="320" />
+                                            <line x1="200" y1="200" x2="200" y2="360" />
+                                            <line x1="200" y1="200" x2="90" y2="320" />
+                                            <line x1="200" y1="200" x2="40" y2="200" />
+                                            <line x1="200" y1="200" x2="90" y2="80" />
+                                        </g>
+                                    </svg>
+                                    <div class="vector-center">
+                                        <i class="fas fa-cloud"></i>
+                                        <span>RECRUITMENT</span>
+                                    </div>
+                                    <div class="vector-node vector-node-1"><i
+                                            class="fas fa-user-check"></i><span>CANDIDATE</span></div>
+                                    <div class="vector-node vector-node-2"><i
+                                            class="fas fa-user-tie"></i><span>CAREER</span></div>
+                                    <div class="vector-node vector-node-3"><i
+                                            class="fas fa-file-alt"></i><span>RESUME</span></div>
+                                    <div class="vector-node vector-node-4"><i
+                                            class="fas fa-briefcase"></i><span>EMPLOYEE</span></div>
+                                    <div class="vector-node vector-node-5"><i
+                                            class="fas fa-check-circle"></i><span>APPLICATION</span></div>
+                                    <div class="vector-node vector-node-6"><i
+                                            class="fas fa-comments"></i><span>INTERVIEW</span></div>
+                                    <div class="vector-node vector-node-7"><i
+                                            class="fas fa-search"></i><span>SEARCH</span></div>
+                                    <div class="vector-node vector-node-8"><i
+                                            class="fas fa-bullseye"></i><span>SKILL</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="col-12 text-center py-4">
+                    <h3 class="text-gold mb-5"><i class="fas fa-chart-line me-2"></i>Quick Stats</h3>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-3 col-6">
+                            <div class="glass-card text-center h-100 p-4">
+                                <i class="fas fa-laptop-code text-gold fs-1 mb-3 anim-float"></i>
+                                <h5 class="text-white">U.S. IT Staffing</h5>
+                                <p class="small text-light-muted mb-0">Decades of experience</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="glass-card text-center h-100 p-4">
+                                <i class="fas fa-map-marked-alt text-gold fs-1 mb-3 anim-float"
+                                    style="animation-delay: 0.5s;"></i>
+                                <h5 class="text-white">Nationwide</h5>
+                                <p class="small text-light-muted mb-0">Successful placements</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="glass-card text-center h-100 p-4">
+                                <i class="fas fa-passport text-gold fs-1 mb-3 anim-float"
+                                    style="animation-delay: 1s;"></i>
+                                <h5 class="text-white">Sponsorship</h5>
+                                <p class="small text-light-muted mb-0">Active program for eligible candidates</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="glass-card text-center h-100 p-4">
+                                <i class="fas fa-city text-gold fs-1 mb-3 anim-float"
+                                    style="animation-delay: 1.5s;"></i>
+                                <h5 class="text-white">New York HQ</h5>
+                                <p class="small text-light-muted mb-0">Regional partnerships across U.S.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Green Card Section -->
-    <section class="green-card-section py-5 text-center text-light">
+    <section class="page-section">
         <div class="container">
-            <!-- Heading -->
-            <h2 class="fw-bold text-uppercase mb-3">Secure Your Future With</h2>
-            <h1 class="fw-bold text-warning mb-4">American Software Resources, Inc.</h1>
+            <h2 class="display-5 text-center fw-bold text-uppercase mb-1" data-aos="fade-up">Secure Your Future</h2>
+            <div class="gold-line" data-aos="fade-up"></div>
 
-            <!-- Logo -->
-            <div class="mb-4">
-                <img src="ASR_new_white_logo.png" alt="ASR Logo" class="img-fluid" style="max-width: 280px;">
+            <div class="row g-4 mt-4" data-aos="fade-up">
+                <!-- Main Header Card -->
+                <div class="col-12">
+                    <div class="glass-card text-center p-5 position-relative overflow-hidden">
+                        <div class="position-absolute align-items-center justify-content-center d-flex z-0"
+                            style="opacity: 0.05; top: -50px; right: -50px; transform: rotate(-15deg);">
+                            <i class="fas fa-passport" style="font-size: 300px;"></i>
+                        </div>
+                        <div class="position-relative z-1">
+                            <h2 class="display-6 fw-bold text-white mb-3">With American Software Resources, Inc.</h2>
+                            <p class="lead text-gold mb-0 fs-4">Is your employer delaying your Green Card process?</p>
+                            <p class="lead text-white fs-4">Don’t wait — take control of your future today.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Cards (Bento style) -->
+                <div class="col-md-4">
+                    <div class="glass-card h-100 p-4 text-center">
+                        <i class="fas fa-rocket text-gold fs-1 mb-3 anim-float"></i>
+                        <h4 class="text-white mb-3">Immediate Initiation</h4>
+                        <p class="text-light-muted">We don't make you wait. We start your Green Card process right away,
+                            prioritizing your career timeline.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card h-100 p-4 text-center">
+                        <i class="fas fa-file-signature text-gold fs-1 mb-3 anim-float"
+                            style="animation-delay: 0.5s;"></i>
+                        <h4 class="text-white mb-3">Advance PWD Filing</h4>
+                        <p class="text-light-muted">Proactive and prepared. We file for your Prevailing Wage
+                            Determination even before your transfer completes.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="glass-card h-100 p-4 text-center">
+                        <i class="fas fa-random text-gold fs-1 mb-3 anim-float" style="animation-delay: 1s;"></i>
+                        <h4 class="text-white mb-3">Seamless Transfer</h4>
+                        <p class="text-light-muted">Transition without friction. All you need is an active project and
+                            eligibility to transfer to our reliable ecosystem.</p>
+                    </div>
+                </div>
+
+                <!-- Commitment Statement Card -->
+                <div class="col-md-8">
+                    <div class="glass-card h-100 p-4 d-flex flex-column justify-content-center">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="vector-center small-vector d-inline-flex me-3 position-relative"
+                                style="width: 50px; height: 50px;">
+                                <i
+                                    class="fas fa-shield-alt fs-3 position-absolute top-50 start-50 translate-middle"></i>
+                            </div>
+                            <h4 class="text-gold mb-0">Our 25-Year Commitment</h4>
+                        </div>
+                        <p class="text-light-muted lead mb-0">
+                            At American Software Resources, Inc., we believe your career growth and stability should
+                            never be on hold. With over 25 years of trusted experience, we are fully committed to
+                            securing your long-term future in the U.S.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="col-md-4">
+                    <div class="glass-card h-100 p-4 text-center"
+                        style="background: rgba(229, 179, 73, 0.1); border-color: rgba(229, 179, 73, 0.3);">
+                        <i class="fas fa-bolt text-gold fs-1 mb-3 anim-signal"></i>
+                        <h4 class="text-white mb-3">Start Today</h4>
+                        <p class="text-light-muted mb-4">Your Green Card journey starts here. Secure. Reliable.
+                            Immediate.</p>
+                        <a href="Contact_Us.html" class="btn btn-gold w-100 py-2 fw-bold">Join Us Today</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Subheading -->
-            <h5 class="fw-bold mb-4">
-                Is your employer delaying your Green Card process?<br>
-                Don’t wait — take control of your future today.
-            </h5>
-
-            <!-- Benefits List -->
-            <ul class="list-unstyled text-start d-inline-block">
-                <li class="mb-3">
-                    ✅ <strong>Immediate Green Card Initiation</strong> – We start your process right away.
-                </li>
-                <li class="mb-3">
-                    ✅ <strong>PWD Filing in Advance</strong> – We file for your PWD even before your transfer.
-                </li>
-                <li class="mb-3">
-                    ✅ <strong>Seamless Transfer Process</strong> – All you need is an active project and eligibility to
-                    transfer.
-                </li>
-            </ul>
-
-            <!-- Paragraph -->
-            <p class="lead mt-4">
-                At American Software Resources, Inc., we believe your career growth and stability should never be on
-                hold.
-                With over 25 years of trusted experience, we are committed to securing your long-term future in the U.S.
-            </p>
-
-            <!-- Call to Action -->
-            <p class="fw-bold text-danger mt-3">
-                📌 Join us today and step into a future of certainty and success.
-            </p>
-
-            <h4 class="fw-bold text-warning mt-4">
-                ⚡ Your Green Card journey starts here. Secure. Reliable. Immediate. ⚡
-            </h4>
         </div>
     </section>
 
 
     <!-- Industries We Specialize In Section -->
-    <section id="industries" class="industries-section">
+    <section id="industries" class="page-section">
         <div class="container">
-            <h2 class="display-5 fw-bold text-center mb-5">Industries We Specialize In</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <h2 class="display-5 fw-bold text-center mb-1" data-aos="fade-up">Industries We Specialize In</h2>
+            <div class="gold-line" data-aos="fade-up"></div>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
                 <!-- Manufacturing Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="Manufacturing.png" class="card-img-top" alt="Manufacturing">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-industry"></i>
+                            <i class="industry-icon anim-spin fas fa-cogs"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Manufacturing</h5>
                             <p class="card-text">We specialize in providing solutions to the manufacturing industry,
                                 improving efficiency and productivity through innovative technologies.</p>
@@ -410,10 +376,13 @@
                     </div>
                 </div>
                 <!-- Service Industry Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="service_industry.png" class="card-img-top" alt="Service Industry">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-users"></i>
+                            <i class="industry-icon anim-float fas fa-hands-helping"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Service Industry</h5>
                             <p class="card-text">Our solutions help businesses in the service industry enhance customer
                                 experiences and streamline operations.</p>
@@ -421,10 +390,13 @@
                     </div>
                 </div>
                 <!-- Hospitality Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="Hospitality.png" class="card-img-top" alt="Hospitality">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-building"></i>
+                            <i class="industry-icon anim-float fas fa-concierge-bell"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Hospitality</h5>
                             <p class="card-text">We provide tailored services to the hospitality industry, focusing on
                                 guest satisfaction and operational efficiency.</p>
@@ -432,10 +404,13 @@
                     </div>
                 </div>
                 <!-- Healthcare Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="Healthcare.png" class="card-img-top" alt="Healthcare">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-hospital"></i>
+                            <i class="industry-icon anim-pulse fas fa-heartbeat"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Healthcare</h5>
                             <p class="card-text">Our expertise extends to the healthcare sector, where we deliver
                                 solutions that improve patient care and hospital management.</p>
@@ -443,10 +418,13 @@
                     </div>
                 </div>
                 <!-- Energy and Power Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="energya_and_power.png" class="card-img-top" alt="Energy and Power">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-bolt"></i>
+                            <i class="industry-icon anim-signal fas fa-solar-panel"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Energy and Power</h5>
                             <p class="card-text">We offer advanced technologies that optimize operations in the energy
                                 and power sectors, driving sustainability and efficiency.</p>
@@ -454,10 +432,13 @@
                     </div>
                 </div>
                 <!-- Information Technology Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="IT_services.png" class="card-img-top" alt="Information Technology">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-network-wired"></i>
+                            <i class="industry-icon anim-float fas fa-server"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Information Technology</h5>
                             <p class="card-text">We provide cutting-edge IT solutions that cater to businesses, helping
                                 them stay ahead in the fast-evolving tech landscape.</p>
@@ -465,10 +446,13 @@
                     </div>
                 </div>
                 <!-- Software Development Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="software_development.png" class="card-img-top" alt="Software Development">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-laptop-code"></i>
+                            <i class="industry-icon anim-float fas fa-code"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Software Development</h5>
                             <p class="card-text">Our custom software development services enable businesses to build
                                 scalable, robust, and secure applications for their operations.</p>
@@ -476,10 +460,13 @@
                     </div>
                 </div>
                 <!-- Telecom Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="Telecom.png" class="card-img-top" alt="Telecom">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-satellite-dish"></i>
+                            <i class="industry-icon anim-signal fas fa-broadcast-tower"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Telecom</h5>
                             <p class="card-text">We specialize in telecom solutions that enhance connectivity and
                                 communication across various networks and devices.</p>
@@ -487,10 +474,13 @@
                     </div>
                 </div>
                 <!-- Electronics Card -->
-                <div class="col">
-                    <div class="card h-100 text-white bg-dark">
-                        <img src="Electronics.png" class="card-img-top" alt="Electronics">
-                        <div class="card-body">
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 glass-card p-0 overflow-hidden">
+                        <div class="industry-vector-container">
+                            <i class="industry-bg-element fas fa-microchip"></i>
+                            <i class="industry-icon anim-float fas fa-memory"></i>
+                        </div>
+                        <div class="card-body p-4 pt-5">
                             <h5 class="card-title">Electronics</h5>
                             <p class="card-text">We provide state-of-the-art solutions for the electronics industry,
                                 focusing on innovation, design, and performance enhancement.</p>
@@ -559,17 +549,28 @@
         showMessage();
         setInterval(showMessage, 5000); // every 3 seconds
     </script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <!-- Footer -->
-<footer class="bg-dark text-light py-4 mt-5">
+<footer class="bg-dark text-light py-4">
     <div class="container text-center">
         <p class="mb-1">&copy; 2025 ASR. All rights reserved.</p>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
-            <li class="list-inline-item"><a href="#" class="text-light text-decoration-none">Terms of Service</a></li>
-            <li class="list-inline-item"><a href="#" class="text-light text-decoration-none">Contact</a></li>
+            <li class="list-inline-item"><a href="Privacy_Policy.html" class="text-light text-decoration-none">Privacy
+                    Policy</a></li>
+            <li class="list-inline-item"><a href="Terms_of_Service.html" class="text-light text-decoration-none">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="Contact_Us.html" class="text-light text-decoration-none">Contact</a>
+            </li>
         </ul>
     </div>
 </footer>

@@ -8,160 +8,161 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom Modern CSS -->
+    <link rel="stylesheet" href="modern.css">
 
     <style>
-    body {
-        padding-top: 56px;
-        background: url("Asr_bg_visa.jpg") no-repeat center top;
-        background-size: cover;
-        background-attachment: scroll;
-        font-family: Arial, sans-serif;
-        color: #fff;
-    }
+        /* TIMELINE */
+        .timeline-container {
+            position: relative;
+            padding: 50px 0;
+            max-width: 1000px;
+            margin: auto;
+        }
 
-    .transparent-navbar {
-        background-color: rgba(0, 0, 0, 0) !important;
-        transition: background-color 0.4s ease;
-    }
-
-    .transparent-navbar.scrolled {
-        background-color: rgba(0, 0, 0, 0.85) !important;
-    }
-
-    /* TIMELINE */
-    .timeline-container {
-        position: relative;
-        padding: 50px 0;
-        max-width: 1000px;
-        margin: auto;
-    }
-
-    .timeline-line {
-        position: absolute;
-        left: 50%;
-        width: 4px;
-        background: #d2d3db;
-        top: 450px;
-        /* << Fix: don't cut heading */
-        bottom: 130px;
-        transform: translateX(-50%);
-    }
-
-    .timeline-dot {
-        position: absolute;
-        left: 50%;
-        width: 22px;
-        height: 22px;
-        background: black;
-        border: 4px solid #ab98ff;
-        border-radius: 50%;
-        top: 450px;
-        /* << Fix: align with line */
-        bottom: 130px;
-        transform: translateX(-50%);
-        transition: top 0.15s linear;
-        z-index: 10;
-    }
-
-
-    .timeline-item {
-        position: relative;
-        width: 50%;
-        padding: 20px 0;
-    }
-
-    .timeline-item.left {
-        left: 0;
-        text-align: right;
-        padding-right: 50px;
-    }
-
-    .timeline-item.right {
-        left: 50%;
-        text-align: left;
-        padding-left: 50px;
-    }
-
-    /* --- REVISED .timeline-card STYLES FOR GLASS EFFECT --- */
-    .timeline-card {
-        /* Glass Effect: semi-transparent white/light background */
-        background-color: rgba(255, 255, 255, 0.1); 
-        
-        /* Frosted Glass Effect (optional, modern look) */
-        backdrop-filter: blur(8px); 
-        
-        /* Remove the background image, size, and min-height fixes */
-        /* background: none; */ 
-        /* background-size: auto; */ 
-        min-height: auto; /* Allow height to be determined by content */
-
-        /* Original Styling */
-        border-left: 5px solid rgba(100, 157, 255, 0.4); /* Make border slightly visible */
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Use a darker, subtle shadow */
-        transition: 0.3s ease;
-    }
-
-    .timeline-card.pop {
-        transform: scale(1.06);
-        /* Make the shadow more prominent when hovered */
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
-    }
-
-    .timeline-card h3 {
-        /* Making heading dark for better readability on light glass background */
-        color: #ffffff; 
-        margin-bottom: 15px;
-    }
-
-    ul {
-        padding-left: 20px;
-    }
-
-    li {
-        margin-bottom: 6px;
-        /* Making list text dark for better readability */
-        color: #ffffff; 
-    }
-    /* ---------------------------------------------------- */
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-
-        .timeline-line {
-            left: 25px !important;
-            top: 450px;
-            bottom: 70px;
-            transform: none !important;
+        /* --- TIMELINE PATH SVG --- */
+        .timeline-svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: visible;
         }
 
         .timeline-dot {
-            left: 25px !important;
-            top: 450px;
-            bottom: 70px;
-            transform: translate(-50%, -10px) !important;
+            position: absolute;
+            z-index: 10;
+            color: #d4af37;
+            font-size: 32px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6);
+            transform-origin: center;
         }
+
+        .timeline-dot.moving i {
+            animation: sprintPulse 0.5s alternate infinite ease-in-out;
+        }
+
+        @keyframes sprintPulse {
+            0% {
+                transform: scale(1);
+                filter: brightness(1);
+            }
+
+            100% {
+                transform: scale(1.15);
+                filter: brightness(1.5);
+            }
+        }
+
 
         .timeline-item {
-            width: 100% !important;
-            left: 0 !important;
-            padding-left: 60px !important;
-            padding-right: 0 !important;
-            text-align: left !important;
+            position: relative;
+            width: 50%;
+            padding: 20px 0;
         }
 
-        .timeline-item.left,
-        .timeline-item.right {
-            text-align: left !important;
-            padding-left: 60px !important;
-            padding-right: 0 !important;
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+            padding-right: 90px;
         }
-    }
-</style>
+
+        .timeline-item.right {
+            left: 50%;
+            text-align: left;
+            padding-left: 90px;
+        }
+
+        /* Glass Card overrides for Timeline */
+        .timeline-card {
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-height: auto;
+            text-align: left;
+            /* force text left alignment inside the cards */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-item.left .timeline-card {
+            border-right: 4px solid rgba(212, 175, 55, 0.6);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-item.right .timeline-card {
+            border-left: 4px solid rgba(212, 175, 55, 0.6);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-card.pop {
+            transform: scale(1.04);
+            box-shadow: 0 15px 45px 0 rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 1);
+        }
+
+        .timeline-card h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-card h3 i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            opacity: 0.9;
+        }
+
+        .timeline-card ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .timeline-card li {
+            margin-bottom: 12px;
+            color: #d1d1d1;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .timeline-card li::before {
+            content: '\f058';
+            /* fa-check-circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.7);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .timeline-item {
+                width: 100% !important;
+                left: 0 !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                text-align: left !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-visa">
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent-navbar">
@@ -192,11 +193,14 @@
     </nav>
 
     <!-- TIMELINE SECTION -->
-    <section class="timeline-container">
+    <section class="timeline-container page-section">
 
-        <h1 class="text-center fw-bold mb-5" style="color:#ffffff;">🌎 Visa Sponsorship</h1>
-        <h2 class="text-center fw-bold mb-2" style="color:#ffffff;">Supporting Global Talent for U.S. Careers</h2>
-        <p class="lead py-4 text-center mb-5">
+        <h1 class="text-center fw-bold mb-5" data-aos="fade-down" style="color:#ffffff;">🌎 Visa Sponsorship</h1>
+        <h2 class="text-center fw-bold mb-2" data-aos="fade-up" style="color:#ffffff;">Supporting Global Talent for U.S.
+            Careers</h2>
+        <div class="gold-line" data-aos="fade-up"></div>
+        <p class="lead py-4 text-center mb-5" data-aos="fade-up" data-aos-delay="100"
+            style="max-width: 900px; margin: 0 auto;">
             American Software Resources believes that great talent knows no borders. We provide services to U.S.
             Citizens as well as visa sponsorship and immigration assistance for qualified foreign candidates who meet
             U.S. employment eligibility criteria.
@@ -204,16 +208,24 @@
 
         <br>
 
-        <!-- Center Line -->
-        <div class="timeline-line"></div>
-        <div class="timeline-dot" id="timelineDot"></div>
+        <!-- Center Line SVG Winding Road -->
+        <svg id="roadmapSvg" class="timeline-svg">
+            <path id="roadmapBase" fill="none" stroke="rgba(212, 175, 55, 0.2)" stroke-width="4"
+                stroke-dasharray="10 10" stroke-linecap="round"></path>
+            <!-- Lit up path trail -->
+            <path id="roadmapTrail" fill="none" stroke="#d4af37" stroke-width="6" stroke-linecap="round"></path>
+        </svg>
+
+        <!-- glowing running icon instead of a plain dot -->
+        <div class="timeline-dot" id="timelineDot"><i class="fas fa-running" id="timelineIcon"></i></div>
 
         <!-- CARD 1 -->
         <div class="timeline-item left " data-step="0.1">
-            <div class="timeline-card text-center">
-              
-                <h3>Programs Supported</h3>
-                <ul>
+            <div class="glass-card timeline-card p-4">
+                <i class="fas fa-passport position-absolute text-white"
+                    style="font-size: 150px; right: -20px; bottom: -20px; opacity: 0.03; transform: rotate(-15deg);"></i>
+                <h3 class="position-relative"><i class="fas fa-file-signature anim-float"></i> Programs Supported</h3>
+                <ul class="position-relative z-1 mb-0">
                     <li>H-1B Sponsorship (new filings & transfers)</li>
                     <li>OPT / CPT Employment</li>
                     <li>Green Card Sponsorship (EB-2 / EB-3)</li>
@@ -223,10 +235,12 @@
 
         <!-- CARD 2 -->
         <div class="timeline-item right" data-step="0.3">
-            <div class="timeline-card text-center">
-            
-                <h3>Eligibility & Policy</h3>
-                <ul>
+            <div class="glass-card timeline-card p-4">
+                <i class="fas fa-balance-scale position-absolute text-white"
+                    style="font-size: 150px; right: -20px; bottom: -20px; opacity: 0.03; transform: rotate(-15deg);"></i>
+                <h3 class="position-relative"><i class="fas fa-gavel anim-float" style="animation-delay: 0.2s;"></i>
+                    Eligibility & Policy</h3>
+                <ul class="position-relative z-1 mb-0">
                     <li>Case-by-case sponsorship evaluation</li>
                     <li>Must meet education & experience requirements</li>
                     <li>Full USCIS & US DOL compliance</li>
@@ -237,29 +251,32 @@
 
         <!-- CARD 3 -->
         <div class="timeline-item left" data-step="0.55">
-            <div class="timeline-card text-center">
-             
-                <h3>Typical Process</h3>
-                <ul>
-                    <li>1. Application screening</li>
-                    <li>2. Eligibility verification</li>
-                    <li>3. H-1B / LCA initiation (if applicable)</li>
-                    <li>4. Filing via immigration partners</li>
-                    <li>5. Onboarding after approval</li>
+            <div class="glass-card timeline-card p-4">
+                <i class="fas fa-tasks position-absolute text-white"
+                    style="font-size: 150px; right: -20px; bottom: -20px; opacity: 0.03; transform: rotate(-15deg);"></i>
+                <h3 class="position-relative"><i class="fas fa-cogs anim-spin" style="animation-delay: 0.5s;"></i>
+                    Typical Process</h3>
+                <ul class="position-relative z-1 mb-0">
+                    <li>Application screening & evaluation</li>
+                    <li>Strict eligibility verification</li>
+                    <li>H-1B / LCA initiation (if applicable)</li>
+                    <li>Filing via dedicated immigration partners</li>
+                    <li>Smooth onboarding after status approval</li>
                 </ul>
             </div>
         </div>
 
         <!-- CARD 4 -->
         <div class="timeline-item right" data-step="0.8">
-            <div class="timeline-card text-center">
-              
-                <h3>Why Choose ASR</h3>
-                <ul>
-                    <li>Proven successful filings</li>
-                    <li>Dedicated legal coordination</li>
-                    <li>Clear communication at every step</li>
-                    <li>Long-term stability & assignments</li>
+            <div class="glass-card timeline-card p-4">
+                <i class="fas fa-trophy position-absolute text-white"
+                    style="font-size: 150px; right: -20px; bottom: -20px; opacity: 0.03; transform: rotate(-15deg);"></i>
+                <h3 class="position-relative"><i class="fas fa-star anim-pulse"></i> Why Choose ASR</h3>
+                <ul class="position-relative z-1 mb-0">
+                    <li>History of proven, successful visa filings</li>
+                    <li>Dedicated legal coordination team</li>
+                    <li>Clear communication at every single step</li>
+                    <li>Long-term stability and project assignments</li>
                 </ul>
             </div>
         </div>
@@ -267,18 +284,41 @@
     </section>
 
     <br>
-<br>
+    <br>
 
-    <div class="text-center mb-5">
+    <div class="text-center mb-5" data-aos="fade-up">
         <a href="mailto:hr@americansoftwareresources.com">
-            <button class="btn btn-lg" style="background:#d4af37;color:black;font-weight:bold;">
+            <button class="btn btn-gold btn-lg">
                 Check Your Visa Eligibility → hr@americansoftwareresources.com
             </button>
         </a>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2025 ASR. All rights reserved.</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="Privacy_Policy.html"
+                        class="text-light text-decoration-none">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="Terms_of_Service.html" class="text-light text-decoration-none">Terms of Service</a>
+                </li>
+                <li class="list-inline-item"><a href="Contact_Us.html"
+                        class="text-light text-decoration-none">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 
     <script>
         // Navbar scroll effect
@@ -291,6 +331,9 @@
         const timeline = document.querySelector(".timeline-container");
         const dot = document.getElementById("timelineDot");
         const items = document.querySelectorAll(".timeline-item");
+        const svg = document.getElementById("roadmapSvg");
+        const basePath = document.getElementById("roadmapBase");
+        const trailPath = document.getElementById("roadmapTrail");
 
         let duration = 6000;
         let startTime = null;
@@ -299,9 +342,53 @@
             return el.offsetTop + el.clientHeight / 2;
         }
 
-        const firstY = getCenterY(items[0]);
-        const lastY = getCenterY(items[items.length - 1]);
-        const distance = lastY - firstY;
+        let firstY, lastY, distance, pathLength;
+
+        function initPath() {
+            firstY = getCenterY(items[0]);
+            lastY = getCenterY(items[items.length - 1]);
+            distance = lastY - firstY;
+
+            let isMobile = window.innerWidth <= 768;
+            const centerX = isMobile ? 25 : timeline.clientWidth / 2;
+            let d = `M ${centerX} 0`;
+            let currentY = 0;
+            let currentX = centerX;
+
+            for (let i = 0; i < items.length; i++) {
+                let y = getCenterY(items[i]) - firstY;
+                let isLeft = items[i].classList.contains('left');
+
+                let curveOffset = isMobile ? 15 : 45;
+                let targetX = isMobile ? centerX + ((i % 2 !== 0) ? curveOffset : 0) : centerX + (isLeft ? -curveOffset : curveOffset);
+
+                if (i === 0) targetX = centerX;
+                if (i === items.length - 1) targetX = centerX;
+
+                let cpY1 = currentY + (y - currentY) / 2;
+                let cpY2 = cpY1;
+
+                if (i > 0) {
+                    d += ` C ${currentX} ${cpY1}, ${targetX} ${cpY2}, ${targetX} ${y}`;
+                }
+                currentX = targetX;
+                currentY = y;
+            }
+
+            svg.style.top = firstY + "px";
+            svg.style.height = distance + "px";
+
+            basePath.setAttribute("d", d);
+            trailPath.setAttribute("d", d);
+
+            pathLength = basePath.getTotalLength();
+            trailPath.style.strokeDasharray = pathLength;
+            trailPath.style.strokeDashoffset = pathLength;
+        }
+
+        // Init and Handle resize
+        initPath();
+        window.addEventListener('resize', initPath);
 
         function animate(ts) {
             if (!startTime) startTime = ts;
@@ -309,13 +396,32 @@
             let progress = (ts - startTime) / duration;
             if (progress > 1) { startTime = ts; progress = 0; }
 
-            let currentY = firstY + distance * progress;
-            dot.style.top = currentY + "px";
+            // Get coordinates from SVG path
+            let currentLength = progress * pathLength;
+            let point = basePath.getPointAtLength(currentLength);
+
+            // Look slightly ahead to determine direction for icon flip
+            let prevPoint = basePath.getPointAtLength(Math.max(0, currentLength - 2));
+            let dx = point.x - prevPoint.x;
+            let scaleX = dx < -0.1 ? -1 : 1; // flip if moving significantly left
+
+            dot.style.left = point.x + "px";
+            dot.style.top = (firstY + point.y) + "px";
+            dot.style.transform = `translateX(-50%) translateY(-15px) scaleX(${scaleX})`;
+
+            // Update trail
+            trailPath.style.strokeDashoffset = pathLength - currentLength;
+
+            // Add sprinting effect
+            if (progress > 0 && progress < 1) {
+                dot.classList.add('moving');
+            } else {
+                dot.classList.remove('moving');
+            }
 
             items.forEach(item => {
                 let step = parseFloat(item.dataset.step);
                 const card = item.querySelector(".timeline-card");
-
                 card.classList.toggle("pop", progress >= step);
             });
 
