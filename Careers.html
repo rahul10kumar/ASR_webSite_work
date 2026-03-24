@@ -86,8 +86,8 @@
                         <h4 class="text-gold fw-bold mb-4 text-center"><i class="fas fa-file-signature me-2"></i>Apply
                             Now</h4>
 
-                        <form id="resumeForm" action="https://formsubmit.co/hr@americansoftwareresources.com"
-                            method="POST" enctype="multipart/form-data" target="_blank">
+                        <form id="resumeForm" action="https://formsubmit.co/ajax/hr@americansoftwareresources.com"
+                            method="POST" enctype="multipart/form-data">
                             <!-- FormSubmit required hidden fields -->
                             <input type="hidden" name="_subject" value="New Resume Submitted on ASR Careers Page!">
                             <input type="hidden" name="_template" value="table">
@@ -236,6 +236,20 @@
 
 
 
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card" style="border: 1px solid rgba(229, 179, 73, 0.3);">
+                <div class="modal-body text-center p-5">
+                    <i class="fas fa-check-circle text-gold mb-4 anim-pulse" style="font-size: 5rem;"></i>
+                    <h3 class="text-white fw-bold mb-3" id="successModalLabel">Application Sent!</h3>
+                    <p class="text-light-muted mb-4">Your application has been successfully submitted to American Software Resources. Our HR team will review it and get back to you shortly.</p>
+                    <button type="button" class="btn btn-gold px-5" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
@@ -343,27 +357,48 @@
 
             // Form submission simulation & redirect handling
             document.getElementById('resumeForm').addEventListener('submit', function (e) {
-                // DO NOT prevent default formatting here. Let the browser submit to FormSubmit.co
-                // FormSubmit will open in a new tab due to target="_blank"
+                e.preventDefault(); // Stop standard redirect submission
 
                 const btn = this.querySelector('button[type="submit"]');
                 const originalHtml = btn.innerHTML;
 
+                btn.disabled = true;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
 
-                // Set a timeout to reset the form UI after the new tab opens
-                setTimeout(() => {
-                    btn.innerHTML = '<i class="fas fa-check-circle me-2"></i>Application Sent!';
-                    btn.classList.replace('btn-gold', 'btn-success');
+                // Submit form data using AJAX
+                const formData = new FormData(this);
 
-                    setTimeout(() => {
-                        this.reset();
-                        fileNameDisplay.classList.add('d-none');
-                        dropZone.style.borderColor = "";
-                        btn.innerHTML = originalHtml;
-                        btn.classList.replace('btn-success', 'btn-gold');
-                    }, 4000); // give the user time to read "sent" before resetting
-                }, 1500);
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to send application. Please try again.');
+                    }
+                })
+                .then(data => {
+                    // Show success modal
+                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
+
+                    // Reset the form
+                    this.reset();
+                    fileNameDisplay.classList.add('d-none');
+                    dropZone.style.borderColor = "";
+                })
+                .catch(error => {
+                    alert(error.message);
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHtml;
+                });
             });
         });
     </script>
