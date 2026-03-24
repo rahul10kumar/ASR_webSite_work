@@ -133,19 +133,20 @@
                                     rows="3" placeholder="Tell us why you're a good fit..."></textarea>
                             </div>
 
+                            <!-- Consent Checkbox -->
+                            <div class="mb-4 d-flex align-items-start gap-2 p-3 rounded-3" style="background: rgba(255, 255, 255, 0.05);">
+                                <div class="form-check">
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="consentCheckbox" required>
+                                    <label class="form-check-label text-light-muted small ms-2" for="consentCheckbox">
+                                        I agree to receive communications by text message (conversational) From American Software Resources. You may opt-out by replying STOP or ask for more information by replying HELP. Message frequency varies. Message and data rates may apply. You may review our <a href="Privacy_Policy.html" target="_blank" class="text-gold text-decoration-none">Privacy Policy</a> to learn how your data is used.
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-gold w-100 py-3 fw-bold mt-2"><i
-                                        class="fas fa-paper-plane me-2 anim-pulse"></i>Submit Application</button>
-                                <p class="text-light-muted small mt-3 px-3">
-                                    By submitting this form, you consent to receive calls and SMS/text
-                                    messages from American Software Resources, Inc. (ASR) regarding job-related updates
-                                    (job
-                                    opportunities, interviews, onboarding). Msg frequency varies. Msg & data rates may
-                                    apply.
-                                    Reply STOP to opt out or HELP for help. <a href="Privacy_Policy.html"
-                                        target="_blank">Privacy
-                                        Policy</a>. We do not sell/share mobile information for marketing.
-                                </p>
+                                <button type="submit" id="submitBtn" class="btn btn-gold w-100 py-3 fw-bold mt-2" disabled>
+                                    <i class="fas fa-paper-plane me-2 anim-pulse"></i>Submit Application
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -331,6 +332,14 @@
                     dropZone.style.borderColor = "#e5b349"; // Turn gold to indicate success
                 }
             }
+
+            // Enable/Disable Submit Button based on Consent Checkbox
+            const consentCheckbox = document.getElementById('consentCheckbox');
+            const submitBtn = document.getElementById('submitBtn');
+
+            consentCheckbox.addEventListener('change', function () {
+                submitBtn.disabled = !this.checked;
+            });
 
             // Form submission simulation & redirect handling
             document.getElementById('resumeForm').addEventListener('submit', function (e) {
