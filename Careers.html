@@ -134,17 +134,25 @@
                             </div>
 
                             <!-- Consent Checkbox -->
-                            <div class="mb-4 d-flex align-items-start gap-2 p-3 rounded-3" style="background: rgba(255, 255, 255, 0.05);">
+                            <div class="mb-4 d-flex align-items-start gap-2 p-3 rounded-3"
+                                style="background: rgba(255, 255, 255, 0.05);">
                                 <div class="form-check">
-                                    <input class="form-check-input custom-checkbox" type="checkbox" id="consentCheckbox" required>
+                                    <input class="form-check-input custom-checkbox" type="checkbox" id="consentCheckbox"
+                                        required>
                                     <label class="form-check-label text-light-muted small ms-2" for="consentCheckbox">
-                                        I agree to receive communications by text message (conversational) From American Software Resources. You may opt-out by replying STOP or ask for more information by replying HELP. Message frequency varies. Message and data rates may apply. You may review our <a href="Privacy_Policy.html" target="_blank" class="text-gold text-decoration-none">Privacy Policy</a> to learn how your data is used.
+                                        I agree to receive communications by text message from American Software
+                                        Resources,Inc. You may opt-out by replying STOP or ask for more information by
+                                        replying HELP. Message frequency varies. Message and data rates may apply. You
+                                        may review our <a href="Privacy_Policy.html" target="_blank"
+                                            class="text-gold text-decoration-none">Privacy Policy</a> to learn how your
+                                        data is used.
                                     </label>
                                 </div>
                             </div>
 
                             <div class="text-center mt-4">
-                                <button type="submit" id="submitBtn" class="btn btn-gold w-100 py-3 fw-bold mt-2" disabled>
+                                <button type="submit" id="submitBtn" class="btn btn-gold w-100 py-3 fw-bold mt-2"
+                                    disabled>
                                     <i class="fas fa-paper-plane me-2 anim-pulse"></i>Submit Application
                                 </button>
                             </div>
@@ -243,7 +251,8 @@
                 <div class="modal-body text-center p-5">
                     <i class="fas fa-check-circle text-gold mb-4 anim-pulse" style="font-size: 5rem;"></i>
                     <h3 class="text-white fw-bold mb-3" id="successModalLabel">Application Sent!</h3>
-                    <p class="text-light-muted mb-4">Your application has been successfully submitted to American Software Resources. Our HR team will review it and get back to you shortly.</p>
+                    <p class="text-light-muted mb-4">Your application has been successfully submitted to American
+                        Software Resources. Our HR team will review it and get back to you shortly.</p>
                     <button type="button" class="btn btn-gold px-5" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -375,30 +384,30 @@
                         'Accept': 'application/json'
                     }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        throw new Error('Failed to send application. Please try again.');
-                    }
-                })
-                .then(data => {
-                    // Show success modal
-                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                    successModal.show();
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Failed to send application. Please try again.');
+                        }
+                    })
+                    .then(data => {
+                        // Show success modal
+                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                        successModal.show();
 
-                    // Reset the form
-                    this.reset();
-                    fileNameDisplay.classList.add('d-none');
-                    dropZone.style.borderColor = "";
-                })
-                .catch(error => {
-                    alert(error.message);
-                })
-                .finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = originalHtml;
-                });
+                        // Reset the form
+                        this.reset();
+                        fileNameDisplay.classList.add('d-none');
+                        dropZone.style.borderColor = "";
+                    })
+                    .catch(error => {
+                        alert(error.message);
+                    })
+                    .finally(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = originalHtml;
+                    });
             });
         });
     </script>
